@@ -1,4 +1,4 @@
-# NLPashto – Natural Language Processing Toolkit for Pashto
+# NLPashto – NLP Toolkit for Pashto
 NLPashto is a python suite for supporting research and development in Pashto Natural Language Processing. NLPashto project is initiated at Shanghai Jiao Tong University, China
 
 ## Prerequisites
