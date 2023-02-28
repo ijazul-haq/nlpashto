@@ -1,14 +1,14 @@
 Metadata-Version: 2.1
-Name: pashto
+Name: nlpashto
 Version: 0.0.1
-Summary: Pashto NLP Toolkit
+Summary: Pashto Natural Language Processing Toolkit
 Author-email: Ijazul Haq <ijazse@hotmail.com>
-Project-URL: Homepage, https://github.com/ijazul-haq/pashto
+Project-URL: Homepage, https://github.com/ijazul-haq/nlpashto
 Classifier: Programming Language :: Python :: 3
 Classifier: License :: OSI Approved :: MIT License
 Classifier: Operating System :: OS Independent
-Requires-Python: >=3.7
+Requires-Python: >=3.8
 Description-Content-Type: text/markdown
 License-File: LICENSE
 
-# Pashto NLP Toolkit
+# Pashto Natural Language Processing Toolkit

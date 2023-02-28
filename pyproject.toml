@@ -3,14 +3,14 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "pashto"
+name = "nlpashto"
 version = "0.0.1"
 authors = [
   { name="Ijazul Haq", email="ijazse@hotmail.com" },
 ]
-description = "Pashto NLP Toolkit"
+description = "Pashto Natural Language Processing Toolkit"
 readme = "README.md"
-requires-python = ">=3.7"
+requires-python = ">=3.8"
 classifiers = [
     "Programming Language :: Python :: 3",
     "License :: OSI Approved :: MIT License",
@@ -18,4 +18,4 @@ classifiers = [
 ]
 
 [project.urls]
-"Homepage" = "https://github.com/ijazul-haq/pashto"
+"Homepage" = "https://github.com/ijazul-haq/nlpashto"

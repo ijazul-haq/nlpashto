@@ -1,0 +1,8 @@
+LICENSE
+README.md
+pyproject.toml
+src/nlpashto.egg-info/PKG-INFO
+src/nlpashto.egg-info/SOURCES.txt
+src/nlpashto.egg-info/dependency_links.txt
+src/nlpashto.egg-info/top_level.txt
+src/pashto/__init__.py

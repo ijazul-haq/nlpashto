@@ -1,8 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-src/pashto/__init__.py
-src/pashto.egg-info/PKG-INFO
-src/pashto.egg-info/SOURCES.txt
-src/pashto.egg-info/dependency_links.txt
-src/pashto.egg-info/top_level.txt
