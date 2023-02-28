@@ -1,6 +1,10 @@
 # Pashto Natural Language Toolkit
 
-## Installation
+## Installing pashto
+You can install pashto from PyPI using this command
+```bash
+pip install pashto
+```
 
 ## Whitespace Correction (Proofing)
 
