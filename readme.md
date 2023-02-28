@@ -1,17 +1,17 @@
-# Pashto Natural Language Toolkit
-pashto is a python suite for supporting research and development in Pashto Natural Language Processing. Pashto project is initiated at Shanghai Jiao Tong University, China
+# NLPashto – Natural Language Processing Toolkit for Pashto
+NLPashto is a python suite for supporting research and development in Pashto Natural Language Processing. NLPashto project is initiated at Shanghai Jiao Tong University, China
 
 ## Prerequisites
-To use pashto you will need:
+To use NLPashto you will need:
 * Python 3.8+
 
-## Installing pashto
+## Installing NLPashto
 You can install pashto from PyPi using this command
 ```bash
-pip install pashto
+pip install nlpashto
 ```
 
-## Using pashto
+## Using NLPashto
 
 ### Tokenization
 
