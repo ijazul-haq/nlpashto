@@ -1,1 +1,1 @@
-# Pashto NLP Toolkit
+# Pashto Natural Language Toolkit
