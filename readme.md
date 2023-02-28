@@ -8,7 +8,7 @@ To use pashto you will need:
 ## Installing pashto
 You can install pashto from PyPi using this command
 ```bash
-pip3 install twitter_scraper
+pip install pashto
 ```
 
 ## Using pashto
