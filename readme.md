@@ -1,5 +1,5 @@
 # Pashto Natural Language Toolkit
-pashto is a python suite for supporting research and development in Pashto Natural Language Processing. Pashto project is initiated by Ijazul Haq, a PhD scholar at the department of Cyberspace Security, Shanghai Jiao Tong University, China
+pashto is a python suite for supporting research and development in Pashto Natural Language Processing. Pashto project is initiated at Shanghai Jiao Tong University, China
 
 ## Prerequisites
 To use pashto you will need:
@@ -22,3 +22,4 @@ pip install pashto
 ### Whitespace Correction (Proofing)
 
 ### Offensive Comments Detection
+
