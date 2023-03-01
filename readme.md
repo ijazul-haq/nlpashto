@@ -1,6 +1,6 @@
 # NLPashto – NLP Toolkit for Pashto
 NLPashto is a python suite for Pashto Natural Language Processing. The project is initiated by a PhD scholar at Shanghai Jiao Tong University. 
-A sample of the Pashto Corpus is available [here](https://github.com/ijazul-haq/pashto_pos), that is used to train some of the models in NLPashto.
+A sample of the Pashto Corpus is available [here](https://github.com/ijazul-haq/pashto_pos) that is used to train some of the models in NLPashto.
 
 ## Prerequisites
 To use NLPashto you will need:
@@ -52,4 +52,4 @@ tagged = pos_tagger(tokenized)
 ```
 
 ### Offensive Comments Detection
-
+Coming soon…
