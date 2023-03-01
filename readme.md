@@ -39,7 +39,7 @@ print(tagged)
 ```
 
 ### Whitespace Correction (Proofing)
-Proofing module can be used to remove the space-omission and space-insertion errors. But only recommended if the input text is extremely noisy. Further reading about the whitespace correction is available in this paper, [Conditional Random Fields for Correction of Whitespace in Noisy Pashto Text and Word Segmentation] (https://#/).
+Proofing module can be used to remove the space-omission and space-insertion errors. But only recommended if the input text is extremely noisy. Further reading about the whitespace correction is available in this [paper](https://www.sciencedirect.com/journal/journal-of-king-saud-university-computer-and-information-sciences) “Conditional Random Fields for Correction of Whitespace in Noisy Pashto Text and Word Segmentation”.
 ```python
 from nlpashto import space_proofing
 
