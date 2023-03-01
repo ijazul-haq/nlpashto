@@ -1,0 +1,38 @@
+Metadata-Version: 2.1
+Name: nlpashto
+Version: 0.0.5
+Summary: Pashto Natural Language Processing Toolkit
+Author-email: Ijazul Haq <ijazse@hotmail.com>
+Project-URL: Homepage, https://github.com/ijazul-haq/nlpashto
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+
+# NLPashto – NLP Toolkit for Pashto
+NLPashto is a python suite for supporting research and development in Pashto Natural Language Processing. NLPashto project is initiated at Shanghai Jiao Tong University, China
+
+## Prerequisites
+To use NLPashto you will need:
+* Python 3.8+
+
+## Installing NLPashto
+You can install pashto from PyPi using this command
+```bash
+pip install nlpashto
+```
+
+## Using NLPashto
+
+### Tokenization
+
+### Word Segmentation
+
+### POS Tagging
+
+### Whitespace Correction (Proofing)
+
+### Offensive Comments Detection
+
