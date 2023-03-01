@@ -1,4 +1,6 @@
 # NLPashto – NLP Toolkit for Pashto
+![GitHub](https://img.shields.io/github/license/ijazul-haq/nlpashto) ![GitHub contributors](https://img.shields.io/github/contributors/ijazul-haq/nlpashto) ![code size](https://img.shields.io/github/languages/code-size/ijazul-haq/nlpashto)
+
 NLPashto is a python suite for Pashto Natural Language Processing. The project is initiated by a PhD scholar at Shanghai Jiao Tong University. 
 A sample of the Pashto Corpus is available [here](https://github.com/ijazul-haq/pashto_pos) that is used to train some of the models in NLPashto.
 
