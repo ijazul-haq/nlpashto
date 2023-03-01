@@ -77,14 +77,26 @@ def features_pos(sentence, index):
     return features
 
 
-def preprocess(c):
+def features_tokenizer(sentence, index):
+    char = sentence[index]
+    features = {
+        'c': char,
+        'is_first': index == 0,
+        'is_last': index == len(sentence)-1
+    }
+    for n in range(1,5):
+        features['prev_'+str(n)] = ''.join(sentence[index-n:index+1])
+        features['next_'+str(n)] = ''.join(sentence[index:index+n+1])
+    return features
+
+def basic_preprocessing(c):
     special_char_dict = {}
     for r in char_replace:
         old, new = r[0], r[1]
         special_char_dict[old] = new
     
     alphabits = 'اب پ ت ټ ث ج چ ح خ څ ځ دډذرړزژږس ش ښ ص ض ط ظ ع غ ف ق ک ګ ل م ن ڼ ں وؤ ه ۀ ي ې ی ےۍئء'
-    punc = '٪.،.\n'
+    punc = '٪،.\n'
     digits = '۰۱۲۳۴۵۶۷۸۹'
     uk = 'ـ'
 
@@ -94,16 +106,18 @@ def preprocess(c):
     
     res = [ele if (ele in alphabits) or (ele in digits) or (ele in punc) else  ' ' for ele in c]
     c = ''.join(res)
-    
     c = re.sub("["+digits+"]+", lambda ele: " " + ele[0] + " ", c)
-
-    c = c.replace('\n', ' ').replace('۔', '.')
+    c = c.replace('\n', ' ')
     c = re.sub('\.+', '.', c)
     c = re.sub('،+', '،', c)
-    c = re.sub('، ،', '،', c)
     c = re.sub('٪+', '٪', c)
-    c = re.sub('٪ ٪', '٪', c)
+    c = c.replace('، ،', '،').replace('٪ ٪', '٪')
     c = re.sub(' +', ' ', c)
-    c = c.strip(' ،.').replace('.','\n')
-    c = re.sub('\n+', '\n', c)
+    c = c.strip(' ،.')
+    return c
+
+def preprocess(c):
+    c = basic_preprocessing(c)
+    c = c.replace('.', ' ')
+    c = re.sub(' +', ' ', c)
     return c

@@ -1,1 +1,1 @@
-from functions import word_tokenizer, pos_tagger
+from nlpashto.functions import tokenizer, word_tokenizer, sentence_tokenizer, pos_tagger

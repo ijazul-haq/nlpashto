@@ -1,39 +1,58 @@
 # NLPashto – NLP Toolkit for Pashto
-NLPashto is a python suite for supporting research and development in Pashto Natural Language Processing. NLPashto project is initiated at Shanghai Jiao Tong University, China
+NLPashto is a python suite for Pashto Natural Language Processing. The project is initiated by a PhD scholar at Shanghai Jiao Tong University. 
+A sample of the Pashto Corpus is available [here](https://github.com/ijazul-haq/pashto_pos) that is used to train some of the models in NLPashto.
 
 ## Prerequisites
 To use NLPashto you will need:
 * Python 3.8+
 
 ## Installing NLPashto
-You can install pashto from PyPi using this command
+NLPashto can be installed from PyPi using this command
 ```bash
 pip install nlpashto
 ```
 
 ## Using NLPashto
 
-### Word Segmentation
-```bash
+### Sentence Tokenizer
+```python
+from nlpashto import sentence_tokenizer
+sentences_list = sentence_tokenizer(‘content’)
+tagged = pos_tagger(tokenized)
+```
+
+### Word Tokenizer
+```python
 from nlpashto import word_tokenizer
 
 text = 'همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي'
 tokenized = word_tokenizer(text)
 print(tokenized)
+['همدارنګه', 'تیره', 'شپه', 'او', 'ورځ', 'په', 'هیواد', 'کې', 'د', 'کرونا ویروس', 'له امله', '۵', 'تنه', 'مړه', 'شوي']
 ```
-Output: ['همدارنګه', 'تیره', 'شپه', 'او', 'ورځ', 'په', 'هیواد', 'کې', 'د', 'کرونا ویروس', 'له امله', '۵', 'تنه', 'مړه', 'شوي']
+
+### Whitespace Tokenizer (Proofing)
+Whitespace Tokenizer can be used as a proofing tool to remove the space-omission and space-insertion errors. It will remove extra spaces from the text and will insert space where necessary. It’s a beta version and only recommended if the input text is extremely noisy. 
+
+```python
+from nlpashto import tokenizer
+
+noisy_text = ‘ه  م  د  ا  ر  ن  ګ ه ت ی ر ه ش پ ه ا وورځپههیوادکېدکروناویروسلهامله۵تنهمړهشوي’
+corrected = tokenizer(noisy_text)
+print(corrected)
+همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي
+```
+
 ### POS Tagging
-```bash
+```python
 from nlpashto import pos_tagger
 
 text = 'همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي'
 tokenized = word_tokenizer(text)
 tagged = pos_tagger(tokenized)
 print(tagged) 
+[['همدارنګه', 'RB'], ['تیره', 'JJ'], ['شپه', 'NNF'], ['او', 'CC'], ['ورځ', 'NNM'], ['په', 'IN'], ['هیواد', 'NNM'], ['کې', 'PT'], ['د', 'IN'], ['کرونا ویروس', 'NNP'], ['له امله', 'RB'], ['۵', 'NB'], ['تنه', 'NNS'], ['مړه', 'JJ'], ['شوي', 'VBDX']]
 ```
-Output: [['همدارنګه', 'RB'], ['تیره', 'JJ'], ['شپه', 'NNF'], ['او', 'CC'], ['ورځ', 'NNM'], ['په', 'IN'], ['هیواد', 'NNM'], ['کې', 'PT'], ['د', 'IN'], ['کرونا ویروس', 'NNP'], ['له امله', 'RB'], ['۵', 'NB'], ['تنه', 'NNS'], ['مړه', 'JJ'], ['شوي', 'VBDX']]
-
-### Whitespace Correction (Proofing)
 
 ### Offensive Comments Detection
-
+Coming soon…
