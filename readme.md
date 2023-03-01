@@ -14,35 +14,15 @@ pip install nlpashto
 
 ## Using NLPashto
 
-### Sentence Tokenizer
-```python
-from nlpashto import sentence_tokenizer
-sentences_list = sentence_tokenizer(‘content’)
-tagged = pos_tagger(tokenized)
-```
-
-### Word Tokenizer
-```python
+### Word Segmentation
+```bash
 from nlpashto import word_tokenizer
 
 text = 'همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي'
 tokenized = word_tokenizer(text)
 print(tokenized)
-['همدارنګه', 'تیره', 'شپه', 'او', 'ورځ', 'په', 'هیواد', 'کې', 'د', 'کرونا ویروس', 'له امله', '۵', 'تنه', 'مړه', 'شوي']
 ```
-
-### Whitespace Tokenizer (Proofing)
-Whitespace Tokenizer can be used as a proofing tool to remove the space-omission and space-insertion errors. It will remove extra spaces from the text and will insert space where necessary. It’s a beta version and only recommended if the input text is extremely noisy. 
-
-```python
-from nlpashto import tokenizer
-
-noisy_text = ‘ه  م  د  ا  ر  ن  ګ ه ت ی ر ه ش پ ه ا وورځپههیوادکېدکروناویروسلهامله۵تنهمړهشوي’
-corrected = tokenizer(noisy_text)
-print(corrected)
-همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي
-```
-
+Output: ['همدارنګه', 'تیره', 'شپه', 'او', 'ورځ', 'په', 'هیواد', 'کې', 'د', 'کرونا ویروس', 'له امله', '۵', 'تنه', 'مړه', 'شوي']
 ### POS Tagging
 ```python
 from nlpashto import pos_tagger
@@ -53,6 +33,9 @@ tagged = pos_tagger(tokenized)
 print(tagged) 
 [['همدارنګه', 'RB'], ['تیره', 'JJ'], ['شپه', 'NNF'], ['او', 'CC'], ['ورځ', 'NNM'], ['په', 'IN'], ['هیواد', 'NNM'], ['کې', 'PT'], ['د', 'IN'], ['کرونا ویروس', 'NNP'], ['له امله', 'RB'], ['۵', 'NB'], ['تنه', 'NNS'], ['مړه', 'JJ'], ['شوي', 'VBDX']]
 ```
+Output: [['همدارنګه', 'RB'], ['تیره', 'JJ'], ['شپه', 'NNF'], ['او', 'CC'], ['ورځ', 'NNM'], ['په', 'IN'], ['هیواد', 'NNM'], ['کې', 'PT'], ['د', 'IN'], ['کرونا ویروس', 'NNP'], ['له امله', 'RB'], ['۵', 'NB'], ['تنه', 'NNS'], ['مړه', 'JJ'], ['شوي', 'VBDX']]
+
+### Whitespace Correction (Proofing)
 
 ### Offensive Comments Detection
 Coming soon…
