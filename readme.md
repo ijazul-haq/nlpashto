@@ -17,7 +17,7 @@ pip install nlpashto
 ### Sentence Tokenizer
 ```python
 from nlpashto import sentence_tokenizer
-sentences_list = sentence_tokenizer(‘content’)
+sentences_list = sentence_tokenizer(content)
 tagged = pos_tagger(tokenized)
 ```
 
@@ -37,7 +37,7 @@ Whitespace Tokenizer can be used as a proofing tool to remove the space-omission
 ```python
 from nlpashto import tokenizer
 
-noisy_text = ‘ه  م  د  ا  ر  ن  ګ ه ت ی ر ه ش پ ه ا وورځپههیوادکېدکروناویروسلهامله۵تنهمړهشوي’
+noisy_text = 'ه  م  د  ا  ر  ن  ګ ه ت ی ر ه ش پ ه ا وورځپههیوادکېدکروناویروسلهامله۵تنهمړهشوي'
 corrected = tokenizer(noisy_text)
 print(corrected)
 همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي
