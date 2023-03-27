@@ -2,7 +2,6 @@
 ![GitHub](https://img.shields.io/github/license/ijazul-haq/nlpashto) ![GitHub contributors](https://img.shields.io/github/contributors/ijazul-haq/nlpashto) ![code size](https://img.shields.io/github/languages/code-size/ijazul-haq/nlpashto)
 
 NLPashto is a Python suite for Pashto Natural Language Processing, initiated at Shanghai Jiao Tong University. 
-A sample of the Pashto Corpus is available [here](https://github.com/ijazul-haq/pashto_pos) that is used to train some of the models in NLPashto.
 
 ## Prerequisites
 To use NLPashto you will need:
@@ -45,7 +44,8 @@ print(corrected)
 همدارنګه تیره شپه او ورځ په هیواد کې د کرونا ویروس له امله ۵ تنه مړه شوي
 ```
 
-### POS Tagging
+### Part-of-speach (POS) Tagging
+For further detail about the POS tagger and the corpus used for training please have a look at our paper [The Pashto Corpus and Machine Learning Model for Automatic POS Tagging](https://www.researchsquare.com/article/rs-2712906/v1)
 ```python
 from nlpashto import pos_tagger
 
@@ -56,5 +56,5 @@ print(tagged)
 [['همدارنګه', 'RB'], ['تیره', 'JJ'], ['شپه', 'NNF'], ['او', 'CC'], ['ورځ', 'NNM'], ['په', 'IN'], ['هیواد', 'NNM'], ['کې', 'PT'], ['د', 'IN'], ['کرونا ویروس', 'NNP'], ['له امله', 'RB'], ['۵', 'NB'], ['تنه', 'NNS'], ['مړه', 'JJ'], ['شوي', 'VBDX']]
 ```
 
-### Offensive Comments Detection
+### Offensive Language Detection
 Coming soon…
