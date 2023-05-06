@@ -1,0 +1,13 @@
+LICENSE
+README.md
+pyproject.toml
+nlpashto/__init__.py
+nlpashto/helpers.py
+nlpashto/pos_tagging.py
+nlpashto/spelling_correction.py
+nlpashto/utils.py
+nlpashto/word_segmentation.py
+nlpashto.egg-info/PKG-INFO
+nlpashto.egg-info/SOURCES.txt
+nlpashto.egg-info/dependency_links.txt
+nlpashto.egg-info/top_level.txt
