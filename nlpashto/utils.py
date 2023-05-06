@@ -40,19 +40,22 @@ def download(model_name=''):
     import requests
     
     for model_name in models:
-        SAVE_PATH = f"nlpashto/models/{model_name}.sav"
+        MODELS_DIR = 'models/'
+        SAVE_PATH = f"{MODELS_DIR+model_name}.sav"
         MODEL_URL = f'https://github.com/ijazul-haq/nlpashto/blob/main/nlpashto/models/{model_name}.sav'
 
         if os.path.exists(SAVE_PATH):
             print(f"Model already exists at {SAVE_PATH}. Skipping download.")
             return
         try:
-            response = requests.get(MODEL_URL, stream=True)
+            if (not os.path.exists(MODELS_DIR)): os.makedirs(MODELS_DIR)
+            print('Downloading...')
+            response = requests.get(MODEL_URL, stream=True, timeout=180)
             response.raise_for_status()
-
+            r = requests.get(MODEL_URL, stream = True)
             with open(SAVE_PATH, "wb") as f:
-                for chunk in response.iter_content(chunk_size=8192):
-                    f.write(chunk)
+                for chunk in r.iter_content(chunk_size=1024):
+                    if chunk: f.write(chunk)
 
             print(f"Model downloaded and saved to {SAVE_PATH}.")
         except Exception as e:

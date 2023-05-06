@@ -2,7 +2,7 @@ import numpy as np
 import pickle
 from .utils import preprocess
 
-MODEL_PATH = "nlpashto/models/space_correct.sav"
+MODEL_PATH = "models/space_correct.sav"
 
 def extract_features(sentence, index):
     char = sentence[index]
