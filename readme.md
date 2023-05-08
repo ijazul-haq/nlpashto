@@ -15,7 +15,7 @@ pip install nlpashto
 
 ## Downloading Models
 Call the download() function and pass the "model name" as argument.
-```bash
+```python
 nlpashto.download('space_correct')
 ```
 Valid model names: 'space_correct', 'pos_tag', 'word_segment', 'pold', 'snd'
