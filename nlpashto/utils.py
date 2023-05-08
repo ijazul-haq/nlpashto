@@ -42,7 +42,7 @@ def download(model_name=''):
     for model_name in models:
         MODELS_DIR = 'models/'
         SAVE_PATH = f"{MODELS_DIR+model_name}.sav"
-        MODEL_URL = f'https://github.com/ijazul-haq/nlpashto/blob/main/nlpashto/models/{model_name}.sav'
+        MODEL_URL = f'https://github.com/ijazul-haq/nlpashto/raw/main/nlpashto/models/{model_name}.sav'
 
         if os.path.exists(SAVE_PATH):
             print(f"Model already exists at {SAVE_PATH}. Skipping download.")
