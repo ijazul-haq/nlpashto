@@ -3,6 +3,8 @@
 
 NLPashto is a Python suite for Pashto Natural Language Processing, initiated at Shanghai Jiao Tong University. 
 
+![Pashto Word Cloud](wc.png)
+
 ## Prerequisites
 To use NLPashto you will need:
 * Python 3.8+
