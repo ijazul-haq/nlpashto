@@ -3,6 +3,8 @@
 
 NLPashto is a Python suite for Pashto Natural Language Processing, initiated at Shanghai Jiao Tong University. 
 
+![Pashto Word Cloud](wc.png)
+
 ## Prerequisites
 To use NLPashto you will need:
 * Python 3.8+
@@ -15,7 +17,7 @@ pip install nlpashto
 
 ## Downloading Models
 Call the download() function and pass the "model name" as argument.
-```bash
+```python
 nlpashto.download('space_correct')
 ```
 Valid model names: 'space_correct', 'pos_tag', 'word_segment', 'pold', 'snd'
