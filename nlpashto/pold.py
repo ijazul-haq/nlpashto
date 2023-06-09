@@ -17,7 +17,7 @@ def extract_features(text):
 
 def pold(text):
     seq_padded = extract_features([text])
-    model = keras.models.load_model(MODEL_DIR+MODEL_NAME)
+    model = keras.models.load_model(MODEL_DIR+MODEL_NAME, compile=False)
     preds = model.predict(seq_padded, verbose=0)
     preds = np.rint(preds.flatten())
     return preds
