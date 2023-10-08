@@ -1,6 +1,6 @@
 import re, emoji, requests, os
 from .pashto import alphabits,diacritics,numbers,punctuations,specials,sentence_delimiters
-version='0.0.16'
+version='0.0.17'
 
 normalize_numbers = {
     '0': '۰',
