@@ -131,7 +131,7 @@ Sample datasets are available on our [Kaggle profile](https://www.kaggle.com/dri
 LinkedIn: [https://www.linkedin.com/in/drijaz/](https://www.linkedin.com/in/drijaz/) 
 
 ## Citations
-Please cite our work if you are using this code or toolkit for learning or using.
+Please cite our work if you are using this code or toolkit for learning or any other purpose.
 
 **For NLPashto ToolKit**
 ```
