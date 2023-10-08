@@ -4,9 +4,7 @@
 
 NLPashto is a Python suite for Pashto Natural Language Processing, which includes tools for fundamental text processing tasks, such as text cleaning, tokenization, and chunking (word segmentation). It also includes state-of-the-art models for POS tagging and sentiment analysis (offensive language detection, to be specific).
 
-
-
-
+### 
 
 **Citation**
 ```
