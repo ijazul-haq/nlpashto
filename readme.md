@@ -92,7 +92,7 @@ from nlpashto import POSTagger
 pos_tagger=POSTagger()
 pos_tagged=pos_tagger.tag(segmented_text)
 print(pos_tagged)
-Output:: [[('جلال اباد', 'NNP'), ('ښار', 'NNM'), ('کې', 'PT'), ('هره', 'JJ'), ('ورځ', 'NNF'), ('لسګونه', 'JJ'), ('کسان', 'NNS'), ('په', 'IN'), ('ډله', 'JJ'), ('ییزه', 'FX'), ('توګه', 'NNF'), ('د', 'IN'), ('نشه يي', 'JJ'), ('توکو', 'NNS'), ('کارولو', 'VBG'), ('ته', 'PT'), ('ادامه', 'NNF'), ('ورکوي', 'VBP')]]
+Output:: [[('جلال اباد', 'NNP'), ('ښار', 'NNM'), ('کې', 'PT'), ('هره', 'JJ'), ('ورځ', 'NNF'), ('لسګونه', 'JJ'), ('کسان', 'NNS'), ('په', 'IN'), ('ډله ییزه', 'JJ'), ('توګه', 'NNF'), ('د', 'IN'), ('نشه يي', 'JJ'), ('توکو', 'NNS'), ('کارولو', 'VBG'), ('ته', 'PT'), ('ادامه', 'NNF'), ('ورکوي', 'VBP')]]
 ```
 The tag method takes a list of segmented sentences as input and returns a List of Lists of tuples where the first element in the tuple is the word and the second element is the corresponding POS tag.
 
