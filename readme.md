@@ -1,9 +1,10 @@
+![Pashto Word Cloud](wc.svg)
 # NLPashto – NLP Toolkit for Pashto
 ![GitHub](https://img.shields.io/github/license/ijazul-haq/nlpashto) ![GitHub contributors](https://img.shields.io/github/contributors/ijazul-haq/nlpashto) ![code size](https://img.shields.io/github/languages/code-size/ijazul-haq/nlpashto)
 
 NLPashto is a Python suite for Pashto Natural Language Processing, initiated at Shanghai Jiao Tong University. 
 
-![Pashto Word Cloud](wc.png)
+
 
 ## Prerequisites
 To use NLPashto you will need:
