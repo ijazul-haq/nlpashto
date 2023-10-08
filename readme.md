@@ -57,7 +57,7 @@ The clean method has several parameters you can play with:
 * `special_chars`=[ ] | list | A list of special characters that you want to keep in the text.
 
 ### Tokenization (Space Correction)
-This module can be used to correct space omission and space insertion errors. It will remove extra spaces from the text and insert space where necessary. It is basically a supervised whitespace tokenizer, but unlike the split() function of Python, the NLPashto Tokenizer is aware of the correct position of whitespace in the text. It is essentially a CRF model, trained on a corpus of 200K sentences. For further detail about this model, please refer to our paper,  [Correction of whitespace and word segmentation in noisy Pashto text using CRF]( https://linkinghub.elsevier.com/retrieve/pii/S0167639323001048).
+This module can be used to correct space omission and space insertion errors. It will remove extra spaces from the text and insert space where necessary. It is basically a supervised whitespace tokenizer, but unlike the split() function of Python, the NLPashto Tokenizer is aware of the correct position of whitespace in the text. It is essentially a CRF model, trained on a corpus of ≈200K sentences. For further detail about this model, please refer to our paper,  [Correction of whitespace and word segmentation in noisy Pashto text using CRF]( https://linkinghub.elsevier.com/retrieve/pii/S0167639323001048).
 
 ```python
 from nlpashto import Tokenizer
