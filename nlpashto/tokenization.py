@@ -7,7 +7,7 @@ from .dataset_utils import SequenceTaggingDataset
 if torch.cuda.is_available():device = torch.device("cuda")
 else:device = torch.device("cpu")
 
-class POSTagger():
+class Tokenizer():
     def __init__(self, batch_size=None):
         self.batch_size=batch_size or 16
         self.max_len=128
@@ -16,7 +16,7 @@ class POSTagger():
         self.tokenizer=AutoTokenizer.from_pretrained(self.model_path)    
         self.id2label=self.model.config.id2label
     
-    def tag(self,sequences=None):
+    def tokenize(self,sequences=None):
         assert isinstance(sequences,list),"input sequences should be a List of List of strings"
         input_ids_,attention_mask_,segments_=[],[],[]
         for tokens_ in sequences:

@@ -1,63 +1,61 @@
-import re
-from .helpers import alphabits, digits, char_replace, diacritics
-uk = 'ـ'
-punc = '٪.،؟'
+import re, emoji
+from .pashto import pashto
 
-def preprocess(c):
-    special_char_dict = {}
-    for r in char_replace:
-        old, new = r[0], r[1]
-        special_char_dict[old] = new
+normalize_numbers = {
+    '0': '۰',
+    '1': '۱',
+    '2': '۲',
+    '3': '۳',
+    '4': '۴',
+    '5': '۵',
+    '6': '۶',
+    '7': '۷',
+    '8': '۸',
+    '9': '۹',
+    '٠': '۰',
+    '١': '۱',
+    '٢': '۲',
+    '٣': '۳',
+    '٤': '۴',
+    '٥': '۵',
+    '٦': '۶',
+    '٧': '۷',
+    '٨': '۸',
+    '٩': '۹'
+}
+
+class Cleaner():
+    def __init__(self):
+        self.alphabits=pashto['alphabits']
+        self.numbers=pashto['numbers']
+        self.punctuations=pashto['punctuations']
+        pass
+    def clean(self,text=None, split_into_sentences=True, remove_emojis=True, normalize_nums=True, remove_puncs=False,  special_chars=[]):
+        sentence_delimiters='.۔'
+        sentences=[]
+        if(split_into_sentences==True):
+            text=text.strip(sentence_delimiters)
+            sentences=re.split(fr'{"|".join(re.escape(char) for char in sentence_delimiters)}', text)
+        else:sentences=[text.strip()]
+        cleaned_sentences=[]
+        for sentence in sentences:
+            allowed_chars=self.alphabits+self.numbers+special_chars
+            if(normalize_nums):
+                map_table = sentence.maketrans(normalize_numbers)
+                sentence = sentence.translate(map_table)
+            else:
+                arabic_numbers=[key for key in normalize_numbers]
+                allowed_chars+=arabic_numbers
+                
+            if(remove_puncs==False):
+                allowed_chars+=self.punctuations
+            sentence = [c if ((c in allowed_chars) or (remove_emojis == False and emoji.is_emoji(c))) else ' ' for c in sentence]
+            if(remove_emojis==False):sentence=[' '+c+' ' if emoji.is_emoji(c) else c for c in sentence]
+            sentence = ''.join(sentence)
+            sentence = re.sub(f'[^{"|".join(re.escape(char) for char in self.alphabits)}]+', lambda c: " " + c[0] + " ", sentence)
+            sentence = re.sub(' +', ' ', sentence)
+            sentence=sentence.strip()
+            cleaned_sentences.append(sentence)
+        cleaned_sentences=cleaned_sentences if split_into_sentences==True else cleaned_sentences[0]
+        return cleaned_sentences
     
-    map_table = c.maketrans(special_char_dict)
-    c = c.translate(map_table)
-    c = c.replace(uk, '')
-    
-    res = [ele if (ele in alphabits) or (ele in digits) or (ele in punc) else  ' ' for ele in c]
-    c = ''.join(res)
-    c = re.sub("["+digits+"]+", lambda ele: " " + ele[0] + " ", c)
-    c = c.replace('\n', ' ')
-    c = re.sub('\.+', '.', c)
-    c = re.sub('،+', '،', c)
-    c = re.sub('٪+', '٪', c)
-    c = c.replace('، ،', '،').replace('٪ ٪', '٪')
-    c = re.sub(' +', ' ', c)
-    c = c.strip(' ،.')
-    c = re.split('؟|\.', c)
-    return c
-
-
-def download(model_name=''):
-    models = ['space_correct', 'pos_tag', 'word_segment', 'pos_tag', 'pold', 'snd']
-    if(model_name!=''):
-        if(model_name in models):
-            models = [model_name]
-        else: 
-            print('Resource name is invalid')
-            return
-
-    import os
-    import requests
-    
-    for model_name in models:
-        MODELS_DIR = 'models/'
-        SAVE_PATH = f"{MODELS_DIR+model_name}.sav"
-        MODEL_URL = f'https://github.com/ijazul-haq/nlpashto/raw/main/nlpashto/models/{model_name}.sav'
-
-        if os.path.exists(SAVE_PATH):
-            print(f"Model already exists at {SAVE_PATH}. Skipping download.")
-            return
-        try:
-            if (not os.path.exists(MODELS_DIR)): os.makedirs(MODELS_DIR)
-            print('Downloading...')
-            response = requests.get(MODEL_URL, stream=True, timeout=180)
-            response.raise_for_status()
-            r = requests.get(MODEL_URL, stream = True)
-            with open(SAVE_PATH, "wb") as f:
-                for chunk in r.iter_content(chunk_size=1024):
-                    if chunk: f.write(chunk)
-
-            print(f"Model downloaded and saved to {SAVE_PATH}.")
-        except Exception as e:
-            raise Exception(f"Failed to download model from {MODEL_URL}: {e}")
-        

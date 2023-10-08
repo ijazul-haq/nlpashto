@@ -1,62 +1,65 @@
-import numpy as np
-import pickle
-from .utils import preprocess
+import torch, os
+os.environ['http_proxy'] = '127.0.0.1:3213'
+os.environ['https_proxy'] = '127.0.0.1:3213' 
+from transformers import AutoTokenizer, AutoModelForTokenClassification
+from torch.utils.data import DataLoader
+from .dataset_utils import SequenceTaggingDataset
+if torch.cuda.is_available():device = torch.device("cuda")
+else:device = torch.device("cpu")
 
-MODEL_PATH = "models/segmenter.sav"
 
-def extract_features(sentence, index):
-    token = sentence[index]
-    prev_1 = ''.join(sentence[index-1:index+1])
-    next_1 = ''.join(sentence[index+1:index+2])
+class Segmenter():
+    def __init__(self, batch_size=None):
+        self.batch_size=batch_size or 16
+        self.max_len=128
+        self.model_path='ijazulhaq/pashto-word-segmentation'
+        self.model=AutoModelForTokenClassification.from_pretrained(self.model_path).to(device)
+        self.tokenizer=AutoTokenizer.from_pretrained(self.model_path)    
+        self.id2label=self.model.config.id2label
     
-    features = {
-        'token': token,
-        'is_first': index == 0,
-        'is_last': index == len(sentence) - 1,
-        'length': len(token),
-        'is_numeric': token.isdigit(),
-        'pfx_1': token[0] if(len(token) > 2) else '',
-        'pfx_2': token[:2] if(len(token) > 3) else '',
-        'pfx_3': token[:3] if(len(token) > 4) else '',
-        'sfx_1': token[-1] if(len(token) > 2) else '',
-        'sfx_2': token[-2:] if(len(token) > 3) else '',
-        'sfx_3': token[-3:] if(len(token) > 4) else '',
+    def segment(self,sequences=None):
+        assert (isinstance(sequences, list) and isinstance(sequences[0], list)),'\"sequences\" should be List of List of strings, for example: sequences=[["token_1","token_2","token_3",...]]'
+        input_ids_,attention_mask_,segments_=[],[],[]
+        for tokens_ in sequences:
+            input_ids,segments=[],[]
+            for token in tokens_:
+                sub_token_ids = self.tokenizer.encode(token)[1:-1]
+                input_ids.extend(sub_token_ids)  
+                segments.append(len(sub_token_ids))
+                segments.extend([0]*(len(sub_token_ids)-1))
+            segments_.append(segments)
+            cls_id= self.tokenizer.encode(self.tokenizer.cls_token, add_special_tokens=False)
+            sep_id= self.tokenizer.encode(self.tokenizer.sep_token, add_special_tokens=False)  
+            input_ids=cls_id+input_ids+sep_id
+            attention_mask=[1]*len(input_ids)
+            attention_mask=attention_mask+[0]*(self.max_len-len(attention_mask))
+            input_ids=input_ids+[0]*(self.max_len-len(input_ids))   
+            input_ids_.append(input_ids) 
+            attention_mask_.append(attention_mask) 
+        encodings = {'input_ids':input_ids_,'attention_mask':attention_mask_}
         
-        'prev_1': prev_1,
-        'prev_1_len': len(prev_1),
-        'prev_1_pfx_1': '' if (not prev_1 or len(prev_1)<3) else prev_1[0],
-        'prev_1_pfx_2': '' if (not prev_1 or len(prev_1)<4) else prev_1[:2],
-        'prev_1_sfx_1': '' if (not prev_1 or len(prev_1)<3) else prev_1[-1],
-        'prev_1_sfx_2': '' if (not prev_1 or len(prev_1)<4) else prev_1[-2:],
-        'prev_2': '' if(index<2) else ''.join(sentence[index-2:index-1]),
+        dataset = SequenceTaggingDataset(encodings)
+        dataloader = DataLoader(dataset,batch_size=self.batch_size)
         
-        'next_1': next_1,
-        'next_1_len': len(next_1),
-        'next_1_pfx_1': '' if (not next_1 or len(next_1)<3) else next_1[0],       
-        'next_1_pfx_2': '' if (not next_1 or len(next_1)<4) else next_1[:2],       
-        'next_1_sfx_1': '' if (not next_1 or len(next_1)<3) else next_1[-1],       
-        'next_1_sfx_2': '' if (not next_1 or len(next_1)<4) else next_1[-2:],       
-        'next_2': ''.join(sentence[index+2:index+3])
-      }
-    return features
+        self.model.eval()
+        preds_,input_ids_=[],[]
+        for batch in dataloader:
+            input_ids=batch['input_ids'].to(device)
+            attention_mask=batch['attention_mask'].to(device)
+            with torch.no_grad():output = self.model(input_ids=input_ids,attention_mask=attention_mask)
+            predictions = output['logits'].argmax(dim=-1)
+            predictions = predictions.detach().cpu().clone().numpy()
+            preds_.extend(predictions) 
+            input_ids_.extend(input_ids.detach().cpu().clone().numpy().tolist())   
 
-def segment_words(text):
-    text = preprocess(text)
-    text = [sentence.split() for sentence in text]
-    features = []
-    for sentence in text:
-        features.append([extract_features(sentence, index) for index in range(len(sentence))])
-
-    with open(MODEL_PATH, "rb") as f:
-        model = pickle.load(f)
-
-    labels = model.predict(features)
-    segmented_text = []
-    for sentence, labels_ in zip(text, labels):
-        segmented_sentence = ''
-        for token, label in zip(sentence, labels_):
-            segmented_sentence = segmented_sentence + token + label
-        segmented_sentence = segmented_sentence.strip(' SB')
-        segmented_sentence = segmented_sentence.replace('S', ' ').split('B')
-        segmented_text.append(segmented_sentence)
-    return segmented_text
+        word_n_tags=[]
+        special_idx=self.tokenizer.all_special_ids
+        excluded_idx=[t for t in special_idx if t!=self.tokenizer.unk_token_id]
+        for idx, preds, original_tokens, segments in zip(input_ids_, preds_, sequences, segments_):
+            bert_tokens=[self.tokenizer.convert_ids_to_tokens(id_) for id_ in idx if id_ not in excluded_idx]
+            preds=preds[1:len(bert_tokens)+1]
+            preds=[self.id2label[item] for item in preds]
+            segment_tags=[preds[i] for i,parts in enumerate(segments) if parts>0]
+            word_n_tag=''.join([word+tag for word,tag in zip(original_tokens,segment_tags)]).replace('S',' ')
+            word_n_tags.append(word_n_tag.split('B'))
+        return word_n_tags
