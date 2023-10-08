@@ -135,7 +135,7 @@ Please cite our work if you are using this code or toolkit for learning or any o
 
 **For NLPashto ToolKit**
 
-(1) H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "NLPashto: NLP Toolkit for Low-resource Pashto Language," International Journal of Advanced Computer Science and Applications, vol. 14, pp. 1345-1352, 2023.
+``H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "NLPashto: NLP Toolkit for Low-resource Pashto Language," International Journal of Advanced Computer Science and Applications, vol. 14, pp. 1345-1352, 2023.``
 
 ```
 @article{haq2023nlpashto,
