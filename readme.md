@@ -166,7 +166,7 @@ Please cite our work if you are using this code or toolkit for learning or any o
 
 **For POS Tagger and Tagset**
 ```
-  @article{haq2023pashto,
+@article{haq2023pashto,
   title={POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={preprint https://doi.org/10.21203/rs.3.rs-2712906/v1},
@@ -176,7 +176,7 @@ Please cite our work if you are using this code or toolkit for learning or any o
 
 **For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
 ```
-  @article{haq2023pold,
+@article{haq2023pold,
   title={Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={PeerJ Comput. Sci.},
