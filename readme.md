@@ -134,23 +134,25 @@ sentiment=sentiment_analysis.predict(offensive_text)
 print(sentiment)
 Output:: 1
 ```
-### Other Resources
+## Other Resources
 #### BERT (WordPiece Level)
+[ijazulhaq/bert-base-pashto](https://huggingface.co/ijazulhaq/bert-base-pashto)
 #### BERT (Character Level)
+[ijazulhaq/bert-base-pashto-c](https://huggingface.co/ijazulhaq/bert-base-pashto-c)
 #### Static Word Embeddings
 For Pashto, we have pretrained 3 types of static word embeddings, available at this repository [pashto-word-embeddings](https://github.com/ijazul-haq/ ). 
-	Word2Vec
-	fastText
-	GloVe
+* Word2Vec
+* fastText
+* GloVe
 #### Examples and Notebooks
 For related examples and Jupyter Notebooks please visit our [Kaggle profile](https://www.kaggle.com/drijaz/) 
 #### Datasets and Text Corpora
 Sample datasets are available on our [Kaggle profile](https://www.kaggle.com/drijaz/), and full version of the datasets and annotated corpora can be provided on request. 
 
-### Reach Us
+## Reach Us
 LinkedIn: [https://www.linkedin.com/in/drijaz/](https://www.linkedin.com/in/drijaz/) 
 
-### Citations
+## Citations
 **For NLPashto ToolKit**
 ```
 @article{haq2023nlpashto,
