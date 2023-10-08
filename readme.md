@@ -78,7 +78,7 @@ segmenter=Segmenter()
 #we are passing the above tokenized text to word segmenter
 segmented_text=segmenter.segment(tokenized_text)
 print(segmented_text) 
-Output:: [['جلال اباد', 'ښار', 'کې', 'هره', 'ورځ', 'لسګونه', 'کسان', 'په', 'ډله', 'ییزه', 'توګه', 'د', 'نشه يي', 'توکو', 'کارولو', 'ته', 'ادامه', 'ورکوي', '']]
+Output:: [['جلال اباد', 'ښار', 'کې', 'هره', 'ورځ', 'لسګونه', 'کسان', 'په', 'ډله ییزه', 'توګه', 'د', 'نشه يي', 'توکو', 'کارولو', 'ته', 'ادامه', 'ورکوي', '']]
 ```
 
 To segment multiple sentences, it’s better to specify the batch size by passing it to the class constructor, as below:
