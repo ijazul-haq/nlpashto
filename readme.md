@@ -32,7 +32,7 @@ pip install nlpashto
 
 ## Basic Usage
 
-###Text Cleaning
+### Text Cleaning
 This module contains basic text cleaning utilities, which can be used as follows:
 ```python
 from nlpashto import Cleaner
@@ -135,22 +135,22 @@ print(sentiment)
 Output:: 1
 ```
 ### Other Resources
-####BERT (WordPiece Level)
-####BERT (Character Level)
-####Static Word Embeddings
+#### BERT (WordPiece Level)
+#### BERT (Character Level)
+#### Static Word Embeddings
 For Pashto, we have pretrained 3 types of static word embeddings, available at this repository [pashto-word-embeddings](https://github.com/ijazul-haq/ ). 
 	Word2Vec
 	fastText
 	GloVe
-####Examples and Notebooks
+#### Examples and Notebooks
 For related examples and Jupyter Notebooks please visit our [Kaggle profile](https://www.kaggle.com/drijaz/) 
-####Datasets and Text Corpora
+#### Datasets and Text Corpora
 Sample datasets are available on our [Kaggle profile](https://www.kaggle.com/drijaz/), and full version of the datasets and annotated corpora can be provided on request. 
 
-###Reach Us
+### Reach Us
 LinkedIn: [https://www.linkedin.com/in/drijaz/](https://www.linkedin.com/in/drijaz/) 
 
-###Citations
+### Citations
 **For NLPashto ToolKit**
 ```
 @article{haq2023nlpashto,
@@ -193,6 +193,7 @@ year={2023}
 ```
 
 **For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
+```
 @article{haq2023pold,
 title={Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT},
 author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
@@ -201,3 +202,4 @@ year={2023},
 issn={2376-5992},
 doi={http://doi.org/10.7717/peerj-cs.1617}
 }
+```
