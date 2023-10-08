@@ -1,4 +1,4 @@
-![Pashto Word Cloud](wc.svg)
+![Pashto Word Cloud](wc.png)
 # NLPashto – NLP Toolkit for Pashto
 ![GitHub](https://img.shields.io/github/license/ijazul-haq/nlpashto) ![GitHub contributors](https://img.shields.io/github/contributors/ijazul-haq/nlpashto) ![code size](https://img.shields.io/github/languages/code-size/ijazul-haq/nlpashto)
 
