@@ -1,6 +1,4 @@
 import torch, os
-os.environ['http_proxy'] = '127.0.0.1:3213'
-os.environ['https_proxy'] = '127.0.0.1:3213' 
 from transformers import AutoTokenizer, AutoModelForTokenClassification
 from torch.utils.data import DataLoader
 from .dataset_utils import SequenceTaggingDataset

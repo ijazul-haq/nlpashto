@@ -1,5 +1,4 @@
-pashto={
-  "alphabits": [
+alphabits=[
     "ا",
     "ء",
     "ٱ",
@@ -108,8 +107,8 @@ pashto={
     "ٸ",
     "ە",
     "ۀ"
-  ],
-  "diacritics": [
+  ]
+diacritics=[
     "߬",
     "۬",
     "ؑ",
@@ -146,8 +145,8 @@ pashto={
     "ۗ",
     "ঁ",
     "্"
-  ],
-  "numbers": [
+  ]
+numbers=[
     "۰",
     "۱",
     "۲",
@@ -158,8 +157,8 @@ pashto={
     "۷",
     "۸",
     "۹"
-  ],
-  "punctuations": [
+  ]
+punctuations=[
     "﮼",
     "'",
     "-",
@@ -186,8 +185,8 @@ pashto={
     "«",
     "»",
     "ܝ"
-  ],
-  "special_chars": [
+  ]
+specials=[
     "﴾",
     "﴿",
     "٪",
@@ -198,4 +197,4 @@ pashto={
     "ﷴ",
     "؎"
   ]
-}
+sentence_delimiters='.۔'
