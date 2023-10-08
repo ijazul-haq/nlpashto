@@ -66,6 +66,7 @@ noisy_txt='جلال اباد ښار کې هره ورځ لس ګونه کسانپ�
 tokenized_text=tokenizer.tokenize(noisy_txt)
 print(tokenized_text)
 Output:: [['جلال', 'اباد', 'ښار', 'کې', 'هره', 'ورځ', 'لسګونه', 'کسان', 'په', 'ډله', 'ییزه', 'توګه', 'د', 'نشه', 'يي', 'توکو', 'کارولو', 'ته', 'ادامه', 'ورکوي']]
+```
 
 ### (Chunking) Word Segmentation
 If we look at the above example, we can see that the Tokenizer has split the compound words, `جلال اباد`, `ډلي ييزه`, and `نشه يي` into meaningless sub-parts. In such cases, where retrieval of the full word is necessary (instead of space-delimited tokens), we can use NLPashto Segmenter class. The word segmentation model is based on transformers, available on HuggingFace [ijazulhaq/pashto-word-segmentation](https://huggingface.co/ijazulhaq/pashto-word-segmentation). 
@@ -165,7 +166,7 @@ Please cite our work if you are using this code or toolkit for learning or using
 
 **For POS Tagger and Tagset**
 ```
-  @article{haq2023pashto,
+@article{haq2023pashto,
   title={POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={preprint https://doi.org/10.21203/rs.3.rs-2712906/v1},
@@ -175,7 +176,7 @@ Please cite our work if you are using this code or toolkit for learning or using
 
 **For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
 ```
-  @article{haq2023pold,
+@article{haq2023pold,
   title={Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={PeerJ Comput. Sci.},
