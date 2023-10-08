@@ -41,7 +41,7 @@ from nlpashto import Cleaner
 cleaner=Cleaner()
 noisy_txt= “په ژوند کی علم  📚📖 , 🖊  او پيسي 💵.  💸💲 دواړه حاصل کړه پوهان به دی علم ته درناوی ولري اوناپوهان به دي پیسو ته… https://t.co/xIiEXFg”
 
-cleaned_text = cleaner.clean(noisy_txt)
+cleaned_text=cleaner.clean(noisy_txt)
 print(cleaned_text)
 Output:: په ژوند کی علم , او پيسي دواړه حاصل کړه پوهان به دی علم ته درناوی ولري او ناپوهان به دي پیسو ته
 
@@ -66,7 +66,6 @@ noisy_txt='جلال اباد ښار کې هره ورځ لس ګونه کسانپ�
 tokenized_text=tokenizer.tokenize(noisy_txt)
 print(tokenized_text)
 Output:: [['جلال', 'اباد', 'ښار', 'کې', 'هره', 'ورځ', 'لسګونه', 'کسان', 'په', 'ډله', 'ییزه', 'توګه', 'د', 'نشه', 'يي', 'توکو', 'کارولو', 'ته', 'ادامه', 'ورکوي']]
-```
 
 ### (Chunking) Word Segmentation
 If we look at the above example, we can see that the Tokenizer has split the compound words, `جلال اباد`, `ډلي ييزه`, and `نشه يي` into meaningless sub-parts. In such cases, where retrieval of the full word is necessary (instead of space-delimited tokens), we can use NLPashto Segmenter class. The word segmentation model is based on transformers, available on HuggingFace [ijazulhaq/pashto-word-segmentation](https://huggingface.co/ijazulhaq/pashto-word-segmentation). 
@@ -74,7 +73,7 @@ If we look at the above example, we can see that the Tokenizer has split the com
 ```python
 from nlpashto import Segmenter
 
-segmenter = Segmenter()
+segmenter=Segmenter()
 #we are passing the above tokenized text to word segmenter
 segmented_text=segmenter.segment(tokenized_text)
 print(segmented_text) 
@@ -83,7 +82,7 @@ Output:: [['جلال اباد', 'ښار', 'کې', 'هره', 'ورځ', 'لسګو�
 
 To segment multiple sentences, it’s better to specify the batch size by passing it to the class constructor, as below:
 ```python
-segmenter = Segmenter(batch_size=32) # by default it’s 16
+segmenter=Segmenter(batch_size=32) # by default it’s 16
 ```
 ### Part-of-speech (POS) Tagging
 For a detailed explanation about the POS tagger, tagset, and the dataset used for training the model, please have a look at our paper [POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model](https://www.researchsquare.com/article/rs-2712906/v1). This is also a transformer-based model, available on HuggingFace [ijazulhaq/pashto-pos](https://huggingface.co/ijazulhaq/pashto-pos).
@@ -102,21 +101,21 @@ NLPashto toolkit includes a state-of-the-art model for offensive language detect
 ```python
 from nlpashto import POLD
 sentiment_analysis=POLD()
-offensive_text = 'مړه یو کس وی صرف ځان شرموی او یو ستا غوندے جاهل وی چې قوم او ملت شرموی'
+offensive_text='مړه یو کس وی صرف ځان شرموی او یو ستا غوندے جاهل وی چې قوم او ملت شرموی'
 sentiment=sentiment_analysis.predict(offensive_text)
 print(sentiment)
 Output:: 1
 
-normal_text = 'تاسو رښتیا وایئ خور 🙏'
+normal_text='تاسو رښتیا وایئ خور 🙏'
 sentiment=sentiment_analysis.predict(offensive_text)
 print(sentiment)
 Output:: 1
 ```
 ## Other Resources
 #### BERT (WordPiece Level)
-[ijazulhaq/bert-base-pashto](https://huggingface.co/ijazulhaq/bert-base-pashto)
+Pretrained Pashto BERT model (PsBERT), available on HuggingFace, [ijazulhaq/bert-base-pashto](https://huggingface.co/ijazulhaq/bert-base-pashto)
 #### BERT (Character Level)
-[ijazulhaq/bert-base-pashto-c](https://huggingface.co/ijazulhaq/bert-base-pashto-c)
+Pretrained Pashto BERT model (character-level), available on HuggingFace, [ijazulhaq/bert-base-pashto-c](https://huggingface.co/ijazulhaq/bert-base-pashto-c)
 #### Static Word Embeddings
 For Pashto, we have pretrained 3 types of static word embeddings, available at this repository [pashto-word-embeddings](https://github.com/ijazul-haq/ ). 
 * Word2Vec
@@ -152,21 +151,21 @@ Please cite our work if you are using this code or toolkit for learning or using
 **For Tokenization, Space Correction and Word segmentation**
 ```
 @article{HAQ2023102970,
-  title = {Correction of whitespace and word segmentation in noisy Pashto text using CRF},
-  journal = {Speech Communication},
-  volume = {153},
-  pages = {102970},
-  year = {2023},
-  issn = {0167-6393},
-  doi = {https://doi.org/10.1016/j.specom.2023.102970},
-  url = {https://www.sciencedirect.com/science/article/pii/S0167639323001048},
-  author = {Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
+  title={Correction of whitespace and word segmentation in noisy Pashto text using CRF},
+  journal={Speech Communication},
+  volume={153},
+  pages={102970},
+  year={2023},
+  issn={0167-6393},
+  doi={https://doi.org/10.1016/j.specom.2023.102970},
+  url={https://www.sciencedirect.com/science/article/pii/S0167639323001048},
+  author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
 }
 ```
 
 **For POS Tagger and Tagset**
 ```
-@article{haq2023pashto,
+  @article{haq2023pashto,
   title={POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={preprint https://doi.org/10.21203/rs.3.rs-2712906/v1},
@@ -176,7 +175,7 @@ Please cite our work if you are using this code or toolkit for learning or using
 
 **For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
 ```
-@article{haq2023pold,
+  @article{haq2023pold,
   title={Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
   journal={PeerJ Comput. Sci.},
