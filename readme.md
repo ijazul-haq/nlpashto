@@ -127,17 +127,16 @@ For related examples and Jupyter Notebooks please visit our [Kaggle profile](htt
 #### Datasets and Text Corpora
 Sample datasets are available on our [Kaggle profile](https://www.kaggle.com/drijaz/), and the full version of the datasets and annotated corpora can be provided on request.
 
-## Reach Us
+## Contact
 LinkedIn: [https://www.linkedin.com/in/drijaz/](https://www.linkedin.com/in/drijaz/) 
+Email: [ijazse@hotmail.com](mailto:ijazse@hotmail.com)
 
 ## Citations
 Please cite our work if you are using this code or toolkit for learning or any other purpose.
 
 **For NLPashto ToolKit**
 
-```
 H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "NLPashto: NLP Toolkit for Low-resource Pashto Language," International Journal of Advanced Computer Science and Applications, vol. 14, pp. 1345-1352, 2023.
-```
 
 ```
 @article{haq2023nlpashto,
@@ -156,9 +155,7 @@ H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "NLPashto: NLP Toolkit for Low-resou
 
 **For Tokenization, Space Correction and Word segmentation**
 
-```
-H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Correction of whitespace and word segmentation in noisy Pashto text using CRF," Speech Communication, vol. 153, p. 102970, 2023.
-```
+***H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Correction of whitespace and word segmentation in noisy Pashto text using CRF," Speech Communication, vol. 153, p. 102970, 2023.***
 
 ```
 @article{HAQ2023102970,
@@ -176,9 +173,7 @@ H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Correction of whitespace and word s
 
 **For POS Tagger and Tagset**
 
-```
-H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model," preprint https://doi.org/10.21203/rs.3.rs-2712906/v1, 2023.
-```
+_H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "POS Tagging of Low-resource Pashto Language: Annotated Corpus and Bert-based Model," preprint https://doi.org/10.21203/rs.3.rs-2712906/v1, 2023._
 
 ```
 @article{haq2023pashto,
@@ -191,9 +186,7 @@ H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "POS Tagging of Low-resource Pashto 
 
 **For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
 
-```
 H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT," PeerJ Comput. Sci., 2023.
-```
 
 ```
 @article{haq2023pold,
