@@ -78,5 +78,5 @@ def download(asset_name, asset_path):
     if response.status_code == 200:
         with open(asset_path, 'wb') as file:
             file.write(response.content)
-        return True
+        print('Downloaded Successfully!')
     else: print(f'Failed to download {asset_name}. Status code: {response.status_code}')
