@@ -35,8 +35,10 @@ class Cleaner():
             text=text.strip(sentence_delimiters)
             sentences=re.split(fr'{"|".join(re.escape(char) for char in sentence_delimiters)}', text)
         else:sentences=[text.strip()]
+        asthetics='ـ'
         cleaned_sentences=[]
         for sentence in sentences:
+            sentence=sentence.replace(asthetics,'')
             allowed_chars=alphabits+diacritics+numbers+special_chars
             if(normalize_nums):
                 map_table = sentence.maketrans(normalize_numbers)
@@ -52,7 +54,8 @@ class Cleaner():
             if(remove_emojis==False):sentence=[' '+c+' ' if emoji.is_emoji(c) else c for c in sentence]
             sentence = ''.join(sentence)
             sentence = re.sub(f'[^{"|".join(re.escape(char) for char in alphabits)}]+', lambda c: " " + c[0] + " ", sentence)
-            sentence = re.sub(' +', ' ', sentence)
+            sentence = re.sub('|\.|\"+', '', sentence)
+            sentence=re.sub(' +',' ',sentence)
             sentence=sentence.strip()
             cleaned_sentences.append(sentence)
         cleaned_sentences=cleaned_sentences if split_into_sentences==True else cleaned_sentences[0]
@@ -78,5 +81,5 @@ def download(asset_name, asset_path):
     if response.status_code == 200:
         with open(asset_path, 'wb') as file:
             file.write(response.content)
-        print('Downloaded Successfully!')
+        return True
     else: print(f'Failed to download {asset_name}. Status code: {response.status_code}')
