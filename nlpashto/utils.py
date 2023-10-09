@@ -1,6 +1,6 @@
 import re, emoji, requests, os
-from .pashto import alphabits,diacritics,numbers,punctuations,specials,sentence_delimiters
-version='0.0.19'
+from .pashto import alphabits,numbers,punctuations,specials,sent_delimiters,diacritics, aesthetics, unknown
+version='0.0.23'
 
 normalize_numbers = {
     '0': '۰',
@@ -26,39 +26,71 @@ normalize_numbers = {
 }
 
 class Cleaner():
-    def __init__(self):
-        pass
-    def clean(self,text=None, split_into_sentences=True, remove_emojis=True, normalize_nums=True, remove_puncs=False, remove_special_chars=True,  special_chars=[]):
+    def _clean_token(self, token):
+        url_chars =['http','//']
+        if(re.search(f"[{'|'.join(re.escape(char) for char in url_chars)}]", token)):
+            token=''
+        elif(token[0]=='@' and len(token)>1):
+            token=''
+        elif(token[0]=='#' and len(token)>1):
+            token=''
+        return token
+        
+    def clean(self,text=None, split_into_sentences=True, remove_emojis=True, normalize_nums=True, remove_puncs=False, remove_special_chars=True,  special_chars=[],split_special_chars=True, remove_diacritics=False, sentence_delimiters=[]):
+        assert (isinstance(text,list) or isinstance(text, str)), 'input text should be string or list'
+        sentence_delimiters=sentence_delimiters or sent_delimiters
         sentences=[]
         if(split_into_sentences==True):
-            assert isinstance(text, str), 'If input text is List, "split_into_sentences" should be False'
-            text=text.strip(sentence_delimiters)
-            sentences=re.split(fr'{"|".join(re.escape(char) for char in sentence_delimiters)}', text)
-        else:sentences=[text.strip()]
-        asthetics='ـ'
+            if(isinstance(text, list)):
+                sub_sentences = []
+                for sent in text:
+                    sub_sents=re.split(fr'{"|".join(re.escape(char) for char in sentence_delimiters)}', sent)
+                    sub_sentences.extend(sub_sents)
+                sentences.extend(sub_sentences)
+            else:
+                sub_sentences=re.split(fr'{"|".join(re.escape(char) for char in sentence_delimiters)}', text)
+                sentences.extend(sub_sentences)
+        else:
+            if(isinstance(text, list)):sentences=text
+            else:sentences=[text]
+        
         cleaned_sentences=[]
         for sentence in sentences:
-            sentence=sentence.replace(asthetics,'')
-            allowed_chars=alphabits+diacritics+numbers+special_chars
+            sentence = re.sub(f"[{''.join(re.escape(char) for char in aesthetics+unknown)}]", '', sentence)
+            tokenized_sentence=sentence.split()
+            tokenized_sentence=[self._clean_token(token) for token in tokenized_sentence]
+            sentence=' '.join(tokenized_sentence)
+            
+            allowed_chars=alphabits+numbers+special_chars+diacritics
             if(normalize_nums):
                 map_table = sentence.maketrans(normalize_numbers)
                 sentence = sentence.translate(map_table)
             else:
                 arabic_numbers=[key for key in normalize_numbers]
-                allowed_chars+=arabic_numbers
-                
+                allowed_chars+=arabic_numbers           
+            
             if(remove_puncs==False):allowed_chars+=punctuations
             if(remove_special_chars==False):allowed_chars+=specials
-
+            
+            # Remove diacritics
+            if(remove_diacritics):          
+                sentence = re.sub(f"[{''.join(re.escape(char) for char in diacritics)}]", '', sentence)
+            
+            # The main filter
             sentence = [c if ((c in allowed_chars) or (remove_emojis == False and emoji.is_emoji(c))) else ' ' for c in sentence]
-            if(remove_emojis==False):sentence=[' '+c+' ' if emoji.is_emoji(c) else c for c in sentence]
             sentence = ''.join(sentence)
-            sentence = re.sub(f'[^{"|".join(re.escape(char) for char in alphabits)}]+', lambda c: " " + c[0] + " ", sentence)
-            sentence = re.sub('|\.|\"+', '', sentence)
-            sentence=re.sub(' +',' ',sentence)
+            
+            # Remove repeated chars
+            sentence = re.sub(f'((?!["{"|".join(re.escape(char) for char in alphabits+numbers)}"]).)\\1+', '\\1', sentence)
+            
+            # Split special chars
+            if(split_special_chars):
+                sentence = re.sub(f"[^{re.escape(''.join(alphabits+numbers+diacritics))}]", ' \\g<0> ', sentence)
+            
+            # Remove repeated chars
+            sentence = re.sub(f'((?!["{"|".join(re.escape(char) for char in alphabits+numbers)}"]).)\\1+', '\\1', sentence)
             sentence=sentence.strip()
-            cleaned_sentences.append(sentence)
-        cleaned_sentences=cleaned_sentences if split_into_sentences==True else cleaned_sentences[0]
+            if(len(sentence)>0):cleaned_sentences.append(sentence)
         return cleaned_sentences
     
 def get_asset(asset_name=None, force_download=False):
@@ -81,5 +113,5 @@ def download(asset_name, asset_path):
     if response.status_code == 200:
         with open(asset_path, 'wb') as file:
             file.write(response.content)
-        return True
+        print('Downloaded Successfully!')
     else: print(f'Failed to download {asset_name}. Status code: {response.status_code}')
