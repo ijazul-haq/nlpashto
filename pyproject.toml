@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "nlpashto"
-version = "0.0.17"
+version = "0.0.19"
 authors = [{ name="Ijazul Haq", email="ijazse@hotmail.com" }]
 description = "Pashto Natural Language Processing Toolkit"
 keywords = ["NLP", "Pashto", "NLPashto", "Pashto NLP", "NLP Toolkit", "Word Segmentation", "Tokenization", "POS Tagging", "Sentinemt Nalysis", "Text Classification", "Token Classification", "Sequence Tagging", "Text Cleaning"]

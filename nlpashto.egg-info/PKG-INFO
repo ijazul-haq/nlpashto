@@ -1,3 +1,24 @@
+Metadata-Version: 2.1
+Name: nlpashto
+Version: 0.0.19
+Summary: Pashto Natural Language Processing Toolkit
+Author-email: Ijazul Haq <ijazse@hotmail.com>
+Project-URL: Homepage, https://github.com/ijazul-haq/nlpashto
+Keywords: NLP,Pashto,NLPashto,Pashto NLP,NLP Toolkit,Word Segmentation,Tokenization,POS Tagging,Sentinemt Nalysis,Text Classification,Token Classification,Sequence Tagging,Text Cleaning
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.8
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: transformers
+Requires-Dist: sklearn-crfsuite
+Requires-Dist: emoji
+Requires-Dist: joblib
+Requires-Dist: numpy
+Requires-Dist: pandas
+Requires-Dist: requests
+
 ![Pashto Word Cloud](wc.png)
 # NLPashto – NLP Toolkit for Pashto
 ![GitHub](https://img.shields.io/github/license/ijazul-haq/nlpashto) ![GitHub contributors](https://img.shields.io/github/contributors/ijazul-haq/nlpashto) ![code size](https://img.shields.io/github/languages/code-size/ijazul-haq/nlpashto)

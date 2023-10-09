@@ -1,0 +1,16 @@
+LICENSE
+README.md
+pyproject.toml
+nlpashto/__init__.py
+nlpashto/dataset_utils.py
+nlpashto/pashto.py
+nlpashto/pos_tagging.py
+nlpashto/sentiment_analysis.py
+nlpashto/tokenization.py
+nlpashto/utils.py
+nlpashto/word_segmentation.py
+nlpashto.egg-info/PKG-INFO
+nlpashto.egg-info/SOURCES.txt
+nlpashto.egg-info/dependency_links.txt
+nlpashto.egg-info/requires.txt
+nlpashto.egg-info/top_level.txt
