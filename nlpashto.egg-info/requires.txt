@@ -1,7 +1,0 @@
-transformers
-sklearn-crfsuite
-emoji
-joblib
-numpy
-pandas
-requests
