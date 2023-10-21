@@ -4,22 +4,6 @@
 
 NLPashto is a Python suite for Pashto Natural Language Processing, which includes tools for fundamental text processing tasks, such as text cleaning, tokenization, and chunking (word segmentation). It also includes state-of-the-art models for POS tagging and sentiment analysis (offensive language detection, to be specific).
 
-**Citation**
-```
-@article{haq2023nlpashto,
-  title={NLPashto: NLP Toolkit for Low-resource Pashto Language},
-  author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
-  journal={International Journal of Advanced Computer Science and Applications},
-  volume={14},
-  number={6},
-  pages={1345-1352},
-  year={2023},
-  issn={2156-5570},
-  doi={https://dx.doi.org/10.14569/IJACSA.2023.01406142}
-  publisher={Science and Information (SAI) Organization Limited}
-}
-```
-
 ## Prerequisites
 To use NLPashto you will need:
 * Python 3.8+
@@ -184,7 +168,7 @@ _H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "POS Tagging of Low-resource Pashto
 }
 ```
 
-**For Sentiment Classification, Offensive Language Detection, and pretrained Pashto BERT model (PsBERT)**
+**For Sentiment Classification, Offensive Language Detection, POLD Dataset, and pretrained Pashto BERT model (PsBERT)**
 
 _H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT," PeerJ Comput. Sci., 2023._
 
@@ -192,9 +176,11 @@ _H. Ijazul, Q. Weidong, G. Jie, and T. Peng, "Pashto offensive language detectio
 @article{haq2023pold,
   title={Pashto offensive language detection: a benchmark dataset and monolingual Pashto BERT},
   author={Ijazul Haq and Weidong Qiu and Jie Guo and Peng Tang},
-  journal={PeerJ Comput. Sci.},
+  journal={PeerJ Computer Science},
+  volume={9},
+  pages={e1617},
   year={2023},
   issn={2376-5992},
-  doi={http://doi.org/10.7717/peerj-cs.1617}
+  doi={10.7717/peerj-cs.1617}
 }
 ```
