@@ -110,7 +110,7 @@ Output:: 1
 normal_text='تاسو رښتیا وایئ خور 🙏'
 sentiment=sentiment_analysis.predict(offensive_text)
 print(sentiment)
-Output:: 1
+Output:: 0
 ```
 ## Other Resources
 #### BERT (WordPiece Level)
