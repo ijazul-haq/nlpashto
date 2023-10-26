@@ -102,7 +102,7 @@ Pretrained Pashto BERT model (PsBERT), available on HuggingFace, [ijazulhaq/bert
 #### BERT (Character Level)
 Pretrained Pashto BERT model (character-level), available on HuggingFace, [ijazulhaq/bert-base-pashto-c](https://huggingface.co/ijazulhaq/bert-base-pashto-c)
 #### Static Word Embeddings
-For Pashto, we have pretrained 3 types of static word embeddings, available at this repository [pashto-word-embeddings](https://github.com/ijazul-haq/ ). 
+For Pashto, we have pretrained 3 types of static word embeddings, available at this [Kaggle repository](https://www.kaggle.com/datasets/drijaz/pashto-we). 
 * Word2Vec
 * fastText
 * GloVe
